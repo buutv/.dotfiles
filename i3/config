@@ -108,16 +108,16 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-set $workspace1 ""
-set $workspace2 ""
-set $workspace3 ""
-set $workspace4 ""
-set $workspace5 ""
-set $workspace6 "?"
-set $workspace7 "?"
-set $workspace8 "?"
-set $workspace9 "?"
-set $workspace10 "?"
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: "
+set $workspace4 "4: "
+set $workspace5 "5: "
+set $workspace6 "6: ?"
+set $workspace7 "7: ?"
+set $workspace8 "8: ?"
+set $workspace9 "9: ?"
+set $workspace10 "10: ?"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -142,17 +142,6 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
-
-exec --no-startup-id i3-msg 'workspace ${workspace1} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace2} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace3} output right'
-exec --no-startup-id i3-msg 'workspace ${workspace4} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace5} output right'
-exec --no-startup-id i3-msg 'workspace ${workspace6} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace7} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace8} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace9} output left'
-exec --no-startup-id i3-msg 'workspace ${workspace10} output left'
 
 # Force progams on specific workspaces
 assign [class="google-chrome"] $workspace1
@@ -221,8 +210,6 @@ bar {
   }
 }
 
-exec sh "$HOME"/.i3/config.sh
-
 # Increase sound volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
 
@@ -243,6 +230,19 @@ exec_always feh --bg-scale ~/Wallpapers/earth.jpg
 
 #Mod programs
 exec compton -f
+
+exec_always ~/.i3/config.sh
+
+exec --no-startup-id i3-msg 'workspace ${workspace1}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace2}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace3}; move workspace to output right'
+exec --no-startup-id i3-msg 'workspace ${workspace4}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace5}; move workspace to output right'
+exec --no-startup-id i3-msg 'workspace ${workspace6}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace7}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace8}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace9}; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace ${workspace10}; move workspace to output left'
 
 # Program startup
 exec --no-startup-id i3-msg 'workspace ${workspace1}; exec google-chrome'
