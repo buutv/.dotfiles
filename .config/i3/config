@@ -157,15 +157,14 @@ mode "$mode_resize" {
     bindsym Escape mode "default"
 }
 
-set $mode_power power
+set $mode_power Session: [l]ock l[o]gout [h]ibernate [r]eboot [s]hutdown
 bindsym Mod1+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.i3/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.i3/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.i3/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.i3/i3exit shutdown
+    bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/i3exit logout
+    bindsym h mode "default", exec --no-startup-id $HOME/.config/i3/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.config/i3/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.config/i3/i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
