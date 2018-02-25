@@ -42,7 +42,7 @@
 
 [frame]
     width = 5
-    color = "#cc241d"
+    color = "#417e6f"
 
 [shortcuts]
     close = ctrl+space
