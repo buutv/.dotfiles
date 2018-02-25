@@ -127,9 +127,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/backlight.sh -i
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
+bindsym $mod+Return exec i3-sensible-terminal
+
 # screenshot
-bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Print exec --no-startup-id "scrot -s $HOME/Screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 bindsym $mod+n exec --no-startup-id thunar
 
