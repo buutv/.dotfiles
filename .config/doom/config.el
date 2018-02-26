@@ -1,0 +1,12 @@
+;;; doom/config.el -*- lexical-binding: t; -*-
+
+
+;; Default emacs working directory
+(setq default-directory "~/work")
+
+
+;; PHP
+(setq flycheck-phpcs-standard "PSR2")
+(setq php-cs-fixer-level-option "~/.config/doom/phpcs-PSR2-custom.xml")
+
+;(add-hook 'php-mode-hook 'php-enable-psr2-coding-style)
