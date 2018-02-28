@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: eloquent-model
+# key: eloquent-model
+# --
+<?php
+
+namespace ${1:Entities};
+
+class ${2:} extends \Eloquent {
+  protected $table   = '${3:}';
+
+  protected $hidden  = [$4];
+
+  public $timestamps = $5:false};
+}
