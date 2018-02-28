@@ -1,15 +1,23 @@
 ;;; private/hlissner/init.el -*- lexical-binding: t; -*-
 
 
+;; User
 (setq user-mail-address "nicolasbeauvais1@gmail.com"
-      user-full-name    "Nicolas Beauvais"
+      user-full-name    "Nicolas Beauvais")
 
-      doom-font (font-spec :family "Fira Mono" :size 15)
+
+;; Fonts
+(setq doom-font (font-spec :family "Fira Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 14)
       doom-unicode-font (font-spec :family "Fira Mono" :size 14)
       doom-big-font (font-spec :family "Fira Mono" :size 19))
 
-;;
+
+;; Keybinding
+(global-set-key (kbd "<C-tab>") 'yas-insert-snippet)
+
+
+;; Doom
 (doom! :feature
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
@@ -29,7 +37,7 @@
        workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
-       company           ; the ultimate code completion backend
+       (company +auto)           ; the ultimate code completion backend
        ivy               ; a search engine for love and life
       ;helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
