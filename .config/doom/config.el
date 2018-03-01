@@ -6,8 +6,14 @@
 
 
 ;; Snippets
-;; Snippets
 (setq yas-snippet-dirs '("~/.config/doom/snippets"))
+
+
+;; Dumb-Jump (go to definition)
+(use-package dumb-jump
+  :bind ("<C-return>" . dumb-jump-go-other-window)
+  :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  :ensure)
 
 ;; PHP
 (setq flycheck-phpcs-standard "PSR2")
