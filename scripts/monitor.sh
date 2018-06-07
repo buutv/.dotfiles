@@ -8,7 +8,7 @@ while read line; do
     activated=$(echo "$line" | grep "connected [0-9]")
 
     if [[ ! -z "$connected" ]]; then
-        echo "    ${output} "
+        echo "${output}"
 
         if [[ ! -z "$activated" ]]; then
             [[ -z "${BLOCK_BUTTON}" ]] || {
@@ -28,7 +28,7 @@ while read line; do
         exit 0
     else
         if [[ ! -z "$activated" ]]; then
-            echo "    ${output} "
+            echo "${output}"
 
             [[ -z "${BLOCK_BUTTON}" ]] || {
                 xrandr --output "${output}" --off

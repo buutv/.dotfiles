@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
-#
 
-#
-# Prezto
-#
-
-# Core
+# Prezto Core
 ln -s "$HOME"/.dotfiles/prezto "$HOME"/.zprezto
+
+# Prezto runcoms
+for dotfile in "$HOME"/.dotfiles/prezto/runcoms/*; do
+    ln -s "$dotfile" "$HOME/.${dotfile#$HOME/.dotfiles/prezto/runcoms/}"
+done
 
 # Scripts
 ln -s "$HOME"/.dotfiles/scripts "$HOME"/scripts
 
-# Configutation
-for dotfile in "$HOME"/.dotfiles/prezto/runcoms/*; do
-    ln -s "$dotfile" "$HOME/.${dotfile#$HOME/.dotfiles/prezto/runcoms/}"
-done
+# Doom emacs private module
+ln -s "$HOME"/.dotfiles/doom_emacs_module "$HOME"/.emacs.d/modules/private
 
 #
 # Config files

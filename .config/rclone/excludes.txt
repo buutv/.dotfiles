@@ -1,0 +1,6 @@
+.ac-php-conf.json
+_ide_helper.php
+.DS_Store
+.idea/**
+vendor/**
+node_modules/**

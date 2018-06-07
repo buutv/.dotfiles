@@ -1,50 +1,47 @@
 ws1="1:  "
 ws2="2:  "
 ws3="3:  "
-ws4="4:  "
-ws5="5:  "
-ws6="6: ? "
-ws7="7: ? "
-ws8="8: ? "
-ws9="9: ? "
-ws10="10: ? "
+ws4="4:  "
+ws5="5:  "
+ws6="6:  "
 
-# Tap click
-xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0 0 0 0 1 2 3
+i3workspaces="$(i3-msg -t get_workspaces)"
 
-# Natural scrolling
-xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -114, -114
+# dual-monitor
+if [ `xrandr | grep -c ' connected '` -eq 2 ]; then
+    if [ `xrandr | grep HDMI-1 | grep -c ' connected '` -eq 1 ]; then
+        # If not already configured
+        if [ `xrandr | grep HDMI-1 | grep -c 'normal left inverted right x axis y axis'` -ne 1 ]; then
+            # If home QHD screen       
+            if [ `xrandr | grep HDMI-1 | grep -c '708mm'` -eq 1 ]; then
+                xrandr --output eDP-1 --auto --primary --output HDMI-1 --mode 2560x1440_30.00 --right-of eDP-1
+            else
+                xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --right-of eDP-1
+            fi
+        fi
 
-# Set up screens
-if [ `xrandr | grep -c ' connected '` -eq 2 ]; then # dual-monitor
-    if [ `xrandr | grep HDMI1 | grep -c ' connected '` -eq 1 ]; then
-        xrandr --output eDP1 --auto --primary --output HDMI1 --auto --right-of eDP1
-        xrandr --output eDP1 --mode 1360x768
+        # If not already configured
+        if [ `xrandr | grep eDP-1 | grep 'connected' | grep 'primary' | grep 'normal left' | grep -c '1360x768'` -ne 1 ]; then
+            xrandr --output eDP-1 --mode 1360x768
+        fi
 
-        i3-msg "workspace $ws2; move workspace to output eDP1"
-        i3-msg "workspace $ws3; move workspace to output HDMI1"
-        i3-msg "workspace $ws4; move workspace to output HDMI1"
-        i3-msg "workspace $ws5; move workspace to output HDMI1"
-        i3-msg "workspace $ws6; move workspace to output eDP1"
-        i3-msg "workspace $ws7; move workspace to output eDP1"
-        i3-msg "workspace $ws8; move workspace to output eDP1"
-        i3-msg "workspace $ws9; move workspace to output eDP1"
-        i3-msg "workspace $ws10; move workspace to output eDP1"
-        i3-msg "workspace $ws1; move workspace to output eDP1"
+        i3-msg "workspace $ws2; move workspace to output eDP-1"
+        i3-msg "workspace $ws3; move workspace to output HDMI-1"
+        i3-msg "workspace $ws4; move workspace to output HDMI-1"
+        i3-msg "workspace $ws5; move workspace to output HDMI-1"
+        i3-msg "workspace $ws6; move workspace to output eDP-1"
+        i3-msg "workspace $ws1; move workspace to output eDP-1"
     fi
 else
-    xrandr --output eDP1 --auto --primary --mode 1920x1080
+    # If not already configured
+    if [ `xrandr | grep eDP-1 | grep 'connected' | grep 'primary' | grep 'normal left' | grep -c '1920x1080'` -ne 1 ]; then
+        xrandr --output eDP-1 --auto --primary --mode 1920x1080
+    fi
 
-    i3-msg "workspace $ws2; move workspace to output eDP1"
-    i3-msg "workspace $ws3; move workspace to output eDP1"
-    i3-msg "workspace $ws4; move workspace to output eDP1"
-    i3-msg "workspace $ws5; move workspace to output eDP1"
-    i3-msg "workspace $ws6; move workspace to output eDP1"
-    i3-msg "workspace $ws7; move workspace to output eDP1"
-    i3-msg "workspace $ws8; move workspace to output eDP1"
-    i3-msg "workspace $ws9; move workspace to output eDP1"
-    i3-msg "workspace $ws10; move workspace to output eDP1"
-    i3-msg "workspace $ws1; move workspace to output eDP1"
+    i3-msg "workspace $ws2; move workspace to output eDP-1"
+    i3-msg "workspace $ws3; move workspace to output eDP-1"
+    i3-msg "workspace $ws4; move workspace to output eDP-1"
+    i3-msg "workspace $ws5; move workspace to output eDP-1"
+    i3-msg "workspace $ws6; move workspace to output eDP-1"
+    i3-msg "workspace $ws1; move workspace to output eDP-1"
 fi
-
-pgrep --exact xev || xev -root -event randr | grep --line-buffered ScreenChangeNotify | while read change; do pkill -RTMIN+4 i3blocks; done

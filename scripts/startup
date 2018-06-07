@@ -1,0 +1,9 @@
+#! /bin/sh
+# /etc/init.d/startup
+#
+
+gnome-settings-daemon &
+gnome-keyring-daemon
+gnome-screensaver &
+nm-applet &
+xautolock -time 20 -locker "gnome-screensaver-command --lock" &
