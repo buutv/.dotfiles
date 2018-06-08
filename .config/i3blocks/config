@@ -1,49 +1,30 @@
 separator=false
 separator_block_width=5
-# border_top=0
-# border_left=0
-# border_right=0
-# border_bottom=4
 
-# [window]
-# command=xtitle
-# interval=persist
-# separator=true
-# separator_block_width=45
-# border=#ff0000
-
-# [updates]
-# command=$HOME/scripts/updates.sh
-# interval=60
-# signal=3
-# urgent=true
-
-[output]
-command=$HOME/scripts/monitor.sh
+[updates]
+command=$HOME/scripts/updates.sh
 interval=60
-signal=4
-#border=#1b1411
+signal=3
+urgent=true
 
-# [volume]
-# label=  
-# command=$HOME/scripts/volume_control.py i3blocks
-# interval=10
-# signal=1
-# markup=pango
-# border=#2e3938
-# 
-# [brightness]
-# label=  
-# command=printf "%.0f " $(xbacklight -get)
-# interval=10
-# signal=2
-# border=#e8ec2
+[volume]
+command=$HOME/scripts/volume.sh
+interval=1
+signal=1
+markup=pango
 
-# [temperature]
-label=
+[brightness]
+label=  
+command=echo "$($HOME/scripts/brightness.sh)"
+instance=5
+interval=2
+signal=11
+min_width="  0%"
+
+[temperature]
+label=   
 command=echo "$($HOME/scripts/temperature.sh 'Core 0') $($HOME/scripts/temperature.sh 'Core 1') "
 interval=5
-# border=#417e6f
 
 # [wireless]
 # label=  
@@ -51,15 +32,14 @@ interval=5
 # interval=2
 # border=#6ea194
 # 
+
 [battery]
 command=$HOME/scripts/battery.sh
 interval=persist
-# border=#2e3938
-# 
-# [time]
-label=  
+
+[time]
+label=
 command=echo "`date +'%H:%M'`";
 interval=5
 markup=pango
-# border=#e8e8c2
 separator_block_width=0

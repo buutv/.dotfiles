@@ -1,46 +1,17 @@
-exec --no-startup-id feh --bg-fill $HOME/wallpaper.jpg --bg-fill $HOME/wallpaper.jpg
+# Loading wallpaper
+exec --no-startup-id feh --bg-fill $HOME/wallpaper.jpg
+
 set $mod Mod4
 
+# Colors
 set $darkred     #cc241d
-set $red         #fb4934
-set $darkgreen   #98971a
-set $green       #b8bb26
-set $darkyellow  #d79921
-set $yellow      #fabd2f
-set $darkblue    #458588
-set $blue        #83a598
-set $darkmagenta #b16286
-set $magenta     #d3869b
+set $darkyellow  #b79173
 set $darkcyan    #518aab
 set $cyan        #61a8ba
-set $darkwhite   #a89984
 set $white       #ffffff
-
-# Use custom colors for black
+set $darkwhite   #a89984
 set $black       #282828
 set $darkblack   #1d2021
-set $transparent #00000000
-
-set $ws1  "1:  "
-set $ws2  "2:  "
-set $ws3  "3:  "
-set $ws4  "4:  "
-set $ws5  "5:  "
-set $ws6  "6:  "
-
-set $default_gaps_inner 15
-set $default_gaps_outer 5
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
-
-#workspace_auto_back_and_forth yes
-force_display_urgency_hint 0 ms
-focus_on_window_activation urgent
-
-floating_minimum_size -1 x -1
-floating_maximum_size -1 x -1
-
-font pango:Hack, FontAwesome 12
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
 client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
@@ -49,38 +20,30 @@ client.focused_inactive $black      $black      $white      $darkblack  $darkbla
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
 
+# Gaps
+set $default_gaps_inner 15
+set $default_gaps_outer 5
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+floating_minimum_size -1 x -1
+floating_maximum_size -1 x -1
+
+# Fonts
+font pango:Fira, FontAwesome 12
+
+# Configuration
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
 floating_modifier $mod
 
-bindsym $mod+q kill
-
-bindsym $mod+d exec --no-startup-id rofi -show run
-
-bindsym $mod+Left focus left
-bindsym $mod+Right focus right
-bindsym $mod+Up focus up
-bindsym $mod+Down focus down
-
-bindsym $mod+Shift+Left move left 35px
-bindsym $mod+Shift+Down move down 35px
-bindsym $mod+Shift+Up move up 35px
-bindsym $mod+Shift+Right move right 35px
-
-bindsym $mod+h split h
-bindsym $mod+v split v
-
-bindsym Hyper_L fullscreen
-bindsym $mod+f fullscreen
-bindsym $mod+g fullscreen global
-
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-
-bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
+# Workspaces
+set $ws1  "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4:  "
+set $ws5  "5:  "
+set $ws6  "6:  "
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -89,15 +52,6 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 
-bindsym $mod+Tab workspace back_and_forth
-
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+Shift+plus scratchpad show
-
-bindsym $mod+Shift+s sticky toggle
-# put YouTube into fullscreen and execute this for media mode
-bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
-
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -105,47 +59,33 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 
+# Shortcuts
+bindsym $mod+r reload
+bindsym $mod+Shift+r restart
+bindsym $mod+q kill
+bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+f fullscreen
+bindsym $mod+g fullscreen global
+bindsym $mod+Shift+space floating toggle
+
+# Volume
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer sset Master 5%-"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer sset Master 5%+"
 bindsym XF86AudioMute exec --no-startup-id "amixer sset Master toggle"
-bindsym $mod+Shift+v exec --no-startup-id "killall pavucontrol; $HOME/scripts/fullscreen_wrap.sh pavucontrol -t 3"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/set-brightness.sh +
-bindsym XF86MonBrightnessDown exec --no-startup-id ${HOME}/scripts/set-brightness.sh -
+# Brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/brightness.sh +
+bindsym XF86MonBrightnessDown exec --no-startup-id ${HOME}/scripts/brightness.sh -
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-
+# Programs
+bindsym --release Print exec --no-startup-id "scrot -s $HOME/Screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym $mod+n exec --no-startup-id nautilus
 bindsym $mod+Return exec i3-sensible-terminal
 
-# screenshot
-bindsym --release Print exec --no-startup-id "scrot -s $HOME/Screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+# Olympics binge-watching mode
+bindsym $mod+o fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 5
 
-bindsym $mod+n exec --no-startup-id thunar
-
-set $mode_resize resize
-bindsym $mod+r mode "$mode_resize"
-mode "$mode_resize" {
-    bindsym Left resize shrink width 10 px or 1 ppt
-    bindsym Down resize grow height 10 px or 1 ppt
-    bindsym Up resize shrink height 10 px or 1 ppt
-    bindsym Right resize grow width 10 px or 1 ppt
-
-    bindsym Shift+Left resize shrink width 20 px or 5 ppt
-    bindsym Shift+Down resize grow height 20 px or 5 ppt
-    bindsym Shift+Up resize shrink height 20 px or 5 ppt
-    bindsym Shift+Right resize grow width 20 px or 5 ppt
-
-    bindsym s mode "default", exec --no-startup-id $HOME/scripts/slopsize.sh
-
-    bindsym 1 mode "default", resize set 1000 600
-    bindsym 2 mode "default", resize set 1500 600
-    bindsym 3 mode "default", resize set 1200 1000
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
+# Mods
 set $mode_power Session: [l]ock l[o]gout [h]ibernate [r]eboot [s]hutdown
 bindsym Mod1+Control+l mode "$mode_power"
 mode "$mode_power" {
@@ -159,60 +99,16 @@ mode "$mode_power" {
     bindsym Escape mode "default"
 }
 
-set $mode_gaps gaps
-set $mode_gaps_outer outer gaps
-set $mode_gaps_inner inner gaps
-bindsym $mod+Shift+g mode "$mode_gaps"
-mode "$mode_gaps" {
-    bindsym o      mode "$mode_gaps_outer"
-    bindsym i      mode "$mode_gaps_inner"
-
-    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
-    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-    bindsym plus  gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
-    bindsym 0     mode "default", gaps inner current set 0
-    bindsym d     mode "default", gaps inner current set $default_gaps_inner
-
-    bindsym Shift+plus  gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
-    bindsym Shift+0     mode "default", gaps inner all set 0
-    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_outer" {
-    bindsym plus  gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
-    bindsym 0     mode "default", gaps outer current set 0
-    bindsym d     mode "default", gaps outer current set $default_gaps_outer
-
-    bindsym Shift+plus  gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
-    bindsym Shift+0     mode "default", gaps outer all set 0
-    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 # Force progams on specific workspaces
 assign [class="jetbrains-phpstorm"] $ws3
 assign [class="emacs25"] $ws3
 assign [class="Gimp"] $ws4
 assign [class="Vlc"] $ws5
 
-# fix graphics glitch
+# Fix graphics glitch
 new_window none
 
+# Set floating mode for some windows
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -221,54 +117,35 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [class="(?i)gsimplecal"] floating enable, move position mouse
-for_window [class="(?i)qemu-system"] floating enable
-for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
-for_window [class="(?i)blueman"] floating enable
-
-#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [instance="__scratchpad"] floating enable
-for_window [instance="__nmtui"] floating enable
-for_window [class="(?i)recordmydesktop"] floating enable
-
-for_window [class="(?i)pavucontrol"] floating enable, move position mouse
-for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down 34px
-
-#assign [class="(?i)chrome"]                       $ws1
-assign [class="(?i)eclipse" window_type="splash"] $ws3
-assign [class="(?i)eclipse" window_type="normal"] $ws3
-assign [class="(?i)thunderbird"]                  $ws9
-
+# I3Bar
 bar {
     status_command i3blocks
     i3bar_command i3bar -t
     position top
-    font pango:Hack, FontAwesome 11
+    font pango:Fira, FontAwesome 11
     strip_workspace_numbers yes
-    separator_symbol "■"
     bindsym button4 nop
     bindsym button5 nop
-    tray_output primary
-    tray_padding 0
+    tray_output eDP-1
+    
     height 30
 
     colors {
         statusline         $white
-        background         #000000
-        separator          #000000
+        background         $darkblack
+        separator          $darkblack
 
 #                          BORDER       BACKGROUND   TEXT
         focused_workspace  $darkcyan    $darkcyan    $white
-        inactive_workspace #000000      #000000      $white
+        inactive_workspace $darkblack   $darkblack   $white
         active_workspace   $cyan        $cyan        $white
         urgent_workspace   $darkred     $darkred     $white
-        binding_mode       #b79173      #b79173      $white        
+        binding_mode       $darkyellow  $darkyellow  $white        
     }
 }
 
 # Autostart
-exec --no-startup-id compton -b
-exec --no-startup-id nm-applet &
+# exec --no-startup-id nm-applet &
 exec --no-startup-id dunst &
 exec --no-startup-id redshift || redshift
 

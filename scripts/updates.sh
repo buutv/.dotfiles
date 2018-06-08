@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-UPDATES=$(checkupdates | wc -l)
-[[ "${UPDATES}" = "0" ]] && exit 0
+if [ `sudo apt-get -u upgrade --assume-no | grep -c 'will be upgraded'` -eq 0 ]; then
+    exit 0
+fi
 
-echo "   ${UPDATES} "
+echo "    Update "
 exit 0

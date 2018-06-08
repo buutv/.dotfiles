@@ -11,9 +11,6 @@ done
 # Scripts
 ln -s "$HOME"/.dotfiles/scripts "$HOME"/scripts
 
-# Doom emacs private module
-ln -s "$HOME"/.dotfiles/doom_emacs_module "$HOME"/.emacs.d/modules/private
-
 #
 # Config files
 #

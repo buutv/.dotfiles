@@ -7,7 +7,6 @@ testing) with:
 - [I3 Blocks](https://github.com/vivien/i3blocks)
 - [Z shell](https://github.com/zsh-users/zsh) with a custom
   [Prezto](https://github.com/nicolasbeauvais/prezto)
-- [Conky](https://github.com/brndnmtthws/conky)
 - [Dunst](https://github.com/dunst-project/dunst)
 - [Doom Emacs](https://github.com/hlissner/doom-emacs)
 - [Rofi](https://github.com/DaveDavenport/rofi)

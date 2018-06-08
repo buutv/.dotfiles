@@ -40,3 +40,4 @@ def get_window_titles():
 
   expression = parse("$..window_properties.title")
   return [match.value for match in expression.find(get_workspace())]
+
