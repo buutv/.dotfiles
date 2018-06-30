@@ -83,7 +83,7 @@ bindsym $mod+n exec --no-startup-id nautilus
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Olympics binge-watching mode
-bindsym $mod+o fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 5
+bindsym $mod+o fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 3880 30
 
 # Mods
 set $mode_power Session: [l]ock l[o]gout [h]ibernate [r]eboot [s]hutdown
