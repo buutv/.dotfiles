@@ -14,8 +14,13 @@
 
 
 ;; Keybinding
-(global-set-key (kbd "<C-tab>") 'yas-insert-snippet)
+(global-set-key (kbd "C-x C-d") 'project-find-file)
+(add-hook 'emmet-mode-hook (lambda () (define-key emmet-mode-keymap (kbd "C-j") 'emmet-expand-line)))
 
+;; Multicursor Keybinding
+(global-set-key (kbd "M-j") 'mc/mark-next-like-this)
+(global-unset-key (kbd "M-<down-mouse-1>"))
+(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;; Doom
 (doom! :feature
