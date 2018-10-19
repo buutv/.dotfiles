@@ -25,12 +25,12 @@
        debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
       ;evil              ; come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files
+      ;file-templates    ; auto-snippets for empty files
        (lookup           ; helps you navigate your code and documentation
         +devdocs         ; ...on devdocs.io online
         +docsets)        ; ...or in Dash docsets locally
       ;services          ; TODO managing external services & code builders
-       snippets          ; my elves. They type so I don't have to
+      ;snippets          ; my elves. They type so I don't have to
        spellcheck        ; tasing you for misspelling mispelling
        syntax-checker    ; tasing you for every semicolon you forget
        version-control   ; remember, remember that commit in November
@@ -122,7 +122,7 @@
       ;crm               ; TODO org-mode for client relations management
       ;(email +gmail)    ; emacs as an email client
       ;irc               ; how neckbeards socialize
-      ;regex             ; emacs as a regexp IDE
+      regex             ; emacs as a regexp IDE
       ;rss               ; emacs as an RSS reader
       ;torrents          ; emacs as a torrent client
       ;twitter           ; twitter client https://twitter.com/vnought
