@@ -1,9 +1,7 @@
 ;;; doom/config.el -*- lexical-binding: t; -*-
 
-
 ;; Default emacs working directory
 (setq default-directory "~/work")
-
 
 ;; Snippets
 (setq yas-snippet-dirs '("~/.config/doom/snippets"))
@@ -23,6 +21,8 @@
 
 ;; JavaScript
 (setq web-mode-code-indent-offset 2)
+
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
 
 ;; SQL
 (setq sql-mysql-login-params
