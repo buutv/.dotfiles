@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 
-volume=$(amixer get Master | grep -E -o '([0-9]{1,3}?)%' | head -1)
-muted=$(amixer get Master | grep -c '\[off\]')
+volume=$(amixer -D pulse get Master | grep -E -o '([0-9]{1,3}?)%' | head -1)
+muted=$(amixer -D pulse get Master | grep -c '\[off\]')
 
 if [ "$muted" -eq 2 ]; then
     echo "  <span color='red'> ${volume}</span> "   

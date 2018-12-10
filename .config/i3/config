@@ -69,9 +69,9 @@ bindsym $mod+g fullscreen global
 bindsym $mod+Shift+space floating toggle
 
 # Volume
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer sset Master 5%-"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer sset Master 5%+"
-bindsym XF86AudioMute exec --no-startup-id "amixer sset Master toggle"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master 5%-"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master 5%+"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse sset Master toggle"
 
 # Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ${HOME}/scripts/brightness.sh +
